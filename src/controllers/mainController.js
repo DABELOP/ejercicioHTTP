@@ -12,8 +12,11 @@ const controller = {
 		let visited =products.filter(product => (product.category == "visited"));
 		res.render('index',{inSale,visited,toThousand});
 	},
+
 	search: (req, res) => {
-		
+		let keywords = req.query.keywords;
+		let search = products.filter(product => product.name.includes(keywords));
+		res.render('results',{keywords,search});
 	},
 };
 
